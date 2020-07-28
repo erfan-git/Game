@@ -4,15 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.activities.MainActivity">
+    tools:context=".controller.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="412dp"
+        android:layout_height="62dp"
+        android:gravity="bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/button_ticTacToc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="7dp"
+            android:layout_weight="1"
+            android:text="@string/tic_tac_toe" />
+
+        <Button
+            android:id="@+id/button_4inARow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="7dp"
+            android:layout_weight="1"
+            android:text="@string/_4_in_a_row" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout_container"
+        android:layout_width="413dp"
+        android:layout_height="670dp"
+        tools:layout_editor_absoluteY="62dp">
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

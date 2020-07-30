@@ -23,19 +23,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        fragmentManager = getSupportFragmentManager();
-
         findAllViews();
-
+        fragmentManager = getSupportFragmentManager();
         setClickListeners();
-
-//        Fragment fragment = fragmentManager.findFragmentById(id.frameLayout_container);
-//        if (fragment == null) {
-//            fragmentManager
-//                    .beginTransaction()
-//                    .add(id.frameLayout_container, createFragment())
-//                    .commit();
-//        }
     }
 
     private void setClickListeners() {
@@ -64,6 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void findAllViews() {
         mButtonTic = findViewById(R.id.button_ticTacToc);
-        mButtonTic = findViewById(id.button_4inARow);
+        mButtonRow = findViewById(R.id.button_4inARow);
     }
 }

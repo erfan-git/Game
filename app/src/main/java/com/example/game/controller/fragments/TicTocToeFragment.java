@@ -18,11 +18,13 @@ import com.example.game.model.TicTocToe;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
-public class TicTocToeFragment extends Fragment {
+import java.io.Serializable;
+
+public class TicTocToeFragment extends Fragment implements Serializable {
+    public static final String KAY_BUNDLE_TIC_TAC_TOE = "kay bundle TicTacToe";
     private Button mButtonTurn;
     private Button[][] mButtonTicTocToe = new Button[3][3];
-    private TicTocToe mTicTocToeX = new TicTocToe(NameOfTicTocToe.X);
-    private TicTocToe mTicTocToeO = new TicTocToe(NameOfTicTocToe.O);
+    private TicTocToe mTicTocToeX;
 
 
     public TicTocToeFragment() {
@@ -31,6 +33,14 @@ public class TicTocToeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            mTicTocToeX = (TicTocToe) savedInstanceState.getSerializable(KAY_BUNDLE_TIC_TAC_TOE);
+            update();
+        } else {
+            mTicTocToeX = new TicTocToe(NameOfTicTocToe.X);
+        }
+        mTicTocToeX.setButtonList(mButtonTicTocToe);
 
     }
 
@@ -44,6 +54,8 @@ public class TicTocToeFragment extends Fragment {
 
         setClickListeners(view);
         return view;
+
+
     }
 
     private void setClickListeners(View view) {
@@ -51,11 +63,11 @@ public class TicTocToeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (mButtonTurn.getText().toString().equals("X")) {
-                    mButtonTicTocToe[0][0].setText("X");
+                    mTicTocToeX.mButtonList[0][0].setText("X");
                     mButtonTurn.setText("O");
                     checkWinner("X");
                 } else {
-                    mButtonTicTocToe[0][0].setText("O");
+                    mTicTocToeX.mButtonList[0][0].setText("O");
                     mButtonTurn.setText("X");
                     checkWinner("O");
                 }
@@ -69,11 +81,11 @@ public class TicTocToeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (mButtonTurn.getText().toString().equals("X")) {
-                    mButtonTicTocToe[0][1].setText("X");
+                    mTicTocToeX.mButtonList[0][1].setText("X");
                     mButtonTurn.setText("O");
                     checkWinner("X");
                 } else {
-                    mButtonTicTocToe[0][1].setText("O");
+                    mTicTocToeX.mButtonList[0][1].setText("O");
                     mButtonTurn.setText("X");
                     checkWinner("O");
                 }
@@ -85,11 +97,11 @@ public class TicTocToeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (mButtonTurn.getText().toString().equals("X")) {
-                    mButtonTicTocToe[0][2].setText("X");
+                    mTicTocToeX.mButtonList[0][2].setText("X");
                     mButtonTurn.setText("O");
                     checkWinner("X");
                 } else {
-                    mButtonTicTocToe[0][2].setText("O");
+                    mTicTocToeX.mButtonList[0][2].setText("O");
                     mButtonTurn.setText("X");
                     checkWinner("O");
                 }
@@ -101,11 +113,11 @@ public class TicTocToeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (mButtonTurn.getText().toString().equals("X")) {
-                    mButtonTicTocToe[1][0].setText("X");
+                    mTicTocToeX.mButtonList[1][0].setText("X");
                     mButtonTurn.setText("O");
                     checkWinner("X");
                 } else {
-                    mButtonTicTocToe[1][0].setText("O");
+                    mTicTocToeX.mButtonList[1][0].setText("O");
                     mButtonTurn.setText("X");
                     checkWinner("O");
                 }
@@ -117,11 +129,11 @@ public class TicTocToeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (mButtonTurn.getText().toString().equals("X")) {
-                    mButtonTicTocToe[1][1].setText("X");
+                    mTicTocToeX.mButtonList[1][1].setText("X");
                     mButtonTurn.setText("O");
                     checkWinner("X");
                 } else {
-                    mButtonTicTocToe[1][1].setText("O");
+                    mTicTocToeX.mButtonList[1][1].setText("O");
                     mButtonTurn.setText("X");
                     checkWinner("O");
                 }
@@ -133,11 +145,11 @@ public class TicTocToeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (mButtonTurn.getText().toString().equals("X")) {
-                    mButtonTicTocToe[1][2].setText("X");
+                    mTicTocToeX.mButtonList[1][2].setText("X");
                     mButtonTurn.setText("O");
                     checkWinner("X");
                 } else {
-                    mButtonTicTocToe[1][2].setText("O");
+                    mTicTocToeX.mButtonList[1][2].setText("O");
                     mButtonTurn.setText("X");
                     checkWinner("O");
                 }
@@ -149,11 +161,11 @@ public class TicTocToeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (mButtonTurn.getText().toString().equals("X")) {
-                    mButtonTicTocToe[2][0].setText("X");
+                    mTicTocToeX.mButtonList[2][0].setText("X");
                     mButtonTurn.setText("O");
                     checkWinner("X");
                 } else {
-                    mButtonTicTocToe[2][0].setText("O");
+                    mTicTocToeX.mButtonList[2][0].setText("O");
                     mButtonTurn.setText("X");
                     checkWinner("O");
                 }
@@ -165,11 +177,11 @@ public class TicTocToeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (mButtonTurn.getText().toString().equals("X")) {
-                    mButtonTicTocToe[2][1].setText("X");
+                    mTicTocToeX.mButtonList[2][1].setText("X");
                     mButtonTurn.setText("O");
                     checkWinner("X");
                 } else {
-                    mButtonTicTocToe[2][1].setText("O");
+                    mTicTocToeX.mButtonList[2][1].setText("O");
                     mButtonTurn.setText("X");
                     checkWinner("O");
                 }
@@ -181,11 +193,11 @@ public class TicTocToeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (mButtonTurn.getText().toString().equals("X")) {
-                    mButtonTicTocToe[2][2].setText("X");
+                    mTicTocToeX.mButtonList[2][2].setText("X");
                     mButtonTurn.setText("O");
                     checkWinner("X");
                 } else {
-                    mButtonTicTocToe[2][2].setText("O");
+                    mTicTocToeX.mButtonList[2][2].setText("O");
                     mButtonTurn.setText("X");
                     checkWinner("O");
                 }
@@ -197,40 +209,34 @@ public class TicTocToeFragment extends Fragment {
 
     private void findAllViews(View view) {
         mButtonTurn = view.findViewById(R.id.button_turn);
-        mButtonTicTocToe[0][0] = view.findViewById(R.id.button_0_0);
-        mButtonTicTocToe[0][1] = view.findViewById(R.id.button_0_1);
-        mButtonTicTocToe[0][2] = view.findViewById(R.id.button_0_2);
-        mButtonTicTocToe[1][0] = view.findViewById(R.id.button_1_0);
-        mButtonTicTocToe[1][1] = view.findViewById(R.id.button_1_1);
-        mButtonTicTocToe[1][2] = view.findViewById(R.id.button_1_2);
-        mButtonTicTocToe[2][0] = view.findViewById(R.id.button_2_0);
-        mButtonTicTocToe[2][1] = view.findViewById(R.id.button_2_1);
-        mButtonTicTocToe[2][2] = view.findViewById(R.id.button_2_2);
+        mTicTocToeX.mButtonList[0][0] = view.findViewById(R.id.button_0_0);
+        mTicTocToeX.mButtonList[0][1] = view.findViewById(R.id.button_0_1);
+        mTicTocToeX.mButtonList[0][2] = view.findViewById(R.id.button_0_2);
+        mTicTocToeX.mButtonList[1][0] = view.findViewById(R.id.button_1_0);
+        mTicTocToeX.mButtonList[1][1] = view.findViewById(R.id.button_1_1);
+        mTicTocToeX.mButtonList[1][2] = view.findViewById(R.id.button_1_2);
+        mTicTocToeX.mButtonList[2][0] = view.findViewById(R.id.button_2_0);
+        mTicTocToeX.mButtonList[2][1] = view.findViewById(R.id.button_2_1);
+        mTicTocToeX.mButtonList[2][2] = view.findViewById(R.id.button_2_2);
     }
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
-
 
     public void checkWinner(String turn) {
-        String line = mButtonTicTocToe[0][0].getText().toString() + mButtonTicTocToe[0][1].getText().toString() + mButtonTicTocToe[0][2].getText().toString();
-        String line1 = mButtonTicTocToe[1][0].getText().toString() + mButtonTicTocToe[1][1].getText().toString() + mButtonTicTocToe[1][2].getText().toString();
-        String line2 = mButtonTicTocToe[2][0].getText().toString() + mButtonTicTocToe[2][1].getText().toString() + mButtonTicTocToe[2][2].getText().toString();
+        String line = mTicTocToeX.getButtonList()[0][0].getText().toString() + mTicTocToeX.getButtonList()[0][1].getText().toString() + mTicTocToeX.getButtonList()[0][2].getText().toString();
+        String line1 = mTicTocToeX.getButtonList()[1][0].getText().toString() + mTicTocToeX.getButtonList()[1][1].getText().toString() + mTicTocToeX.getButtonList()[1][2].getText().toString();
+        String line2 = mTicTocToeX.getButtonList()[2][0].getText().toString() + mTicTocToeX.getButtonList()[2][1].getText().toString() + mTicTocToeX.getButtonList()[2][2].getText().toString();
         if (line.equals("XXX") || line.equals("OOO") || line1.equals("XXX") || line1.equals("OOO") || line2.equals("XXX") || line2.equals("OOO")) {
             Snackbar.make(getView(), "winner :" + turn, Snackbar.LENGTH_LONG).show();
             disable();
         } else {
-            line = mButtonTicTocToe[0][0].getText().toString() + mButtonTicTocToe[1][0].getText().toString() + mButtonTicTocToe[2][0].getText().toString();
-            line1 = mButtonTicTocToe[0][1].getText().toString() + mButtonTicTocToe[1][1].getText().toString() + mButtonTicTocToe[2][1].getText().toString();
-            line2 = mButtonTicTocToe[0][2].getText().toString() + mButtonTicTocToe[1][2].getText().toString() + mButtonTicTocToe[2][2].getText().toString();
+            line = mTicTocToeX.getButtonList()[0][0].getText().toString() + mTicTocToeX.getButtonList()[1][0].getText().toString() + mTicTocToeX.getButtonList()[2][0].getText().toString();
+            line1 = mTicTocToeX.getButtonList()[0][1].getText().toString() + mTicTocToeX.getButtonList()[1][1].getText().toString() + mTicTocToeX.getButtonList()[2][1].getText().toString();
+            line2 = mTicTocToeX.getButtonList()[0][2].getText().toString() + mTicTocToeX.getButtonList()[1][2].getText().toString() + mTicTocToeX.getButtonList()[2][2].getText().toString();
             if (line.equals("XXX") || line.equals("OOO") || line1.equals("XXX") || line1.equals("OOO") || line2.equals("XXX") || line2.equals("OOO")) {
                 Snackbar.make(getView(), "winner :" + turn, Snackbar.LENGTH_LONG).show();
                 disable();
             } else {
-                line = mButtonTicTocToe[0][0].getText().toString() + mButtonTicTocToe[1][1].getText().toString() + mButtonTicTocToe[2][2].getText().toString();
-                line1 = mButtonTicTocToe[2][0].getText().toString() + mButtonTicTocToe[1][1].getText().toString() + mButtonTicTocToe[0][2].getText().toString();
+                line = mTicTocToeX.getButtonList()[0][0].getText().toString() + mTicTocToeX.getButtonList()[1][1].getText().toString() + mTicTocToeX.getButtonList()[2][2].getText().toString();
+                line1 = mTicTocToeX.getButtonList()[2][0].getText().toString() + mTicTocToeX.getButtonList()[1][1].getText().toString() + mTicTocToeX.getButtonList()[0][2].getText().toString();
                 if (line.equals("XXX") || line.equals("OOO") || line1.equals("XXX") || line1.equals("OOO")) {
                     Snackbar.make(getView(), "winner :" + turn, Snackbar.LENGTH_LONG).show();
                     disable();
@@ -243,6 +249,25 @@ public class TicTocToeFragment extends Fragment {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 mButtonTicTocToe[i][j].setEnabled(false);
+            }
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(KAY_BUNDLE_TIC_TAC_TOE, mTicTocToeX);
+
+    }
+
+    public void update() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (mTicTocToeX.mButtonList[i][j] != null) {
+//                    mButtonTicTocToe[i][j].setText(mTicTocToeX.mButtonList[i][j].getText().toString());
+                    mTicTocToeX.mButtonList[i][j].setEnabled(false);
+//                    mButtonTicTocToe[i][j].setEnabled(false);
+                }
             }
         }
     }

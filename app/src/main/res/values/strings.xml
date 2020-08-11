@@ -6,4 +6,7 @@
     <string name="_4_in_a_row">4 in a Row</string>
     <string name="game_tic_toc_toe">Game : Tic Toc Toe</string>
     <string name="turn">turn :</string>
+    <string name="winner_blue"> Winner : BLUE </string>
+    <string name="winner_red"> Winner : RED </string>
+
 </resources>
